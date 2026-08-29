@@ -3,6 +3,8 @@ leitura_arquivo.py
 Leitura do arquivo texto que descreve o mapa.
 """
 
+import os
+
 from grafo import Grafo
 
 
@@ -36,9 +38,23 @@ class DadosMapa:
         )
 
 
+def _resolver_caminho(caminho):
+    """Localiza o arquivo de mapa a partir do diretorio atual ou do projeto.
+
+    Ao executar por duplo clique, o diretorio de trabalho pode nao ser a pasta
+    do projeto, entao tambem procuramos ao lado deste modulo.
+    """
+    if os.path.exists(caminho):
+        return caminho
+    vizinho = os.path.join(os.path.dirname(os.path.abspath(__file__)), caminho)
+    if os.path.exists(vizinho):
+        return vizinho
+    return caminho
+
+
 def _linhas_uteis(caminho):
     """Le o arquivo e devolve so as linhas que interessam."""
-    with open(caminho, "r", encoding="utf-8") as arquivo:
+    with open(_resolver_caminho(caminho), "r", encoding="utf-8") as arquivo:
         for linha in arquivo:
             linha = linha.strip()
             if linha and not linha.startswith("#"):
@@ -150,3 +166,13 @@ def _validar(dados):
         raise ValueError(
             "O mapa nao e conexo: existem pontos inalcancaveis a partir do restante da regiao."
         )
+
+
+if __name__ == "__main__":
+    print(__doc__.strip())
+    print("\nEste arquivo e um modulo: ele nao roda sozinho.")
+    print("Para iniciar o simulador, execute executar.py.")
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass

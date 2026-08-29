@@ -3,6 +3,11 @@ teste_grafo.py
 Testes da estrutura de grafo.
 """
 
+import os
+import traceback
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 from grafo import Grafo
 
 
@@ -72,10 +77,22 @@ def teste_grafo_de_referencia():
     assert custo == 12, f"esperado custo 12, obtido {custo}"
     print("OK - confere com o caso de teste de referencia (A -> B -> F -> H)")
 
+def _pausar():
+    """Mantem a janela aberta quando o arquivo e executado por duplo clique."""
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass
+
+
 if __name__ == "__main__":
-    teste_grafo_pequeno()
-    teste_grafo_de_referencia()
-    teste_conectividade()
-    teste_soma_pesos()
-    teste_mais_distante()
-    print("\nTodos os testes passaram.")
+    try:
+        teste_grafo_pequeno()
+        teste_grafo_de_referencia()
+        teste_conectividade()
+        teste_soma_pesos()
+        teste_mais_distante()
+        print("\nTodos os testes passaram.")
+    except Exception:
+        traceback.print_exc()
+    _pausar()

@@ -310,3 +310,13 @@ class EquipeRocket(Treinador):
                 registro.append(f"  A Equipe Rocket roubou uma insignia!")
             return insignia
         return None
+
+
+if __name__ == "__main__":
+    print(__doc__.strip())
+    print("\nEste arquivo e um modulo: ele nao roda sozinho.")
+    print("Para iniciar o simulador, execute executar.py.")
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass

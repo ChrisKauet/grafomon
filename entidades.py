@@ -243,3 +243,13 @@ class Item:
                 curados += 1
         self.coletado = True
         return curados
+
+
+if __name__ == "__main__":
+    print(__doc__.strip())
+    print("\nEste arquivo e um modulo: ele nao roda sozinho.")
+    print("Para iniciar o simulador, execute executar.py.")
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass

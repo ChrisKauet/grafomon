@@ -140,7 +140,7 @@ class Grafo:
         return max(alcancaveis, key=alcancaveis.get)
 
     def __str__(self):
-        """Impressao legivel do grafo"""
+        """Impressao legivel do grafo, util para depuracao."""
         linhas = [f"Grafo: {self.num_vertices()} vertices, {self.num_arestas()} arestas"]
         for v in sorted(self.adj):
             marcas = self.info[v].get("tipo", "")
@@ -148,3 +148,13 @@ class Grafo:
             vizinhos = ", ".join(f"{n}({p})" for n, p in sorted(self.adj[v]))
             linhas.append(f"  {rotulo} -> {vizinhos}")
         return "\n".join(linhas)
+
+
+if __name__ == "__main__":
+    print(__doc__.strip())
+    print("\nEste arquivo e um modulo: ele nao roda sozinho.")
+    print("Para iniciar o simulador, execute executar.py.")
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass

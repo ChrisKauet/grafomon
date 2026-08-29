@@ -4,6 +4,10 @@ Teste de integracao: jornada automatica completa.
 """
 
 import random
+import os
+import traceback
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from leitura_arquivo import ler_mapa
 
@@ -126,5 +130,17 @@ def main():
           f"(a {dist[destino]} unidades de distancia)")
     print("\nSimulacao concluida sem erros.")
 
+def _pausar():
+    """Mantem a janela aberta quando o arquivo e executado por duplo clique."""
+    try:
+        input("\nPressione Enter para fechar...")
+    except EOFError:
+        pass
+
+
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        traceback.print_exc()
+    _pausar()
