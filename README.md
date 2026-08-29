@@ -115,4 +115,4 @@ O prazo de inscrição na Liga é calculado como
 
 ## Vídeo de explicação
 
-- _(link)_
+[- _(link)_](https://youtu.be/DJV9XlgOGd8)
